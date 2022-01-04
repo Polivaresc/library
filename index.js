@@ -1,4 +1,4 @@
-let myLibrary = []
+let myLibrary = ['the hobbit', 'lord of the rings']
 
 function Book() {
 
@@ -10,7 +10,7 @@ function addBookToLibrary() {
         const userInput = document.querySelector('#user-input').value
         myLibrary.push(userInput)
 
-        document.getElementById('user-input').value = ''
+        clearInput()
     })
 }
 
@@ -19,9 +19,12 @@ function displayBooks() {
         const bookDiv = document.createElement('div')
         bookDiv.innerText = book
 
-        const library = document.querySelector('#my-library')
-        library.appendChild(bookDiv)
+        document.querySelector('#my-library').appendChild(bookDiv)
     }) 
+}
+
+function clearInput() {
+    document.getElementById('user-input').value = ''
 }
 
 addBookToLibrary()

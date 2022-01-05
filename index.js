@@ -1,8 +1,33 @@
 let myLibrary = []
 
-function Book() {
 
-}
+// function Book(title) {
+//     this.title = title
+//     this.author = author 
+//     this.pages = pages 
+
+//     isRead = function () {
+//         if (read) {
+//             return 'already read'
+//         } else {
+//             return 'not read yet'
+//         }
+//     }
+// }
+
+// const Book = {
+//     title: this.title,
+//     author: this.author,
+//     pages: this.pages,
+//     isRead: function() {
+//                 if (read) {
+//                     return 'already read'
+//                 } else {
+//                     return 'not read yet'
+//                 }
+//             }
+// }
+
 
 function addBookToLibrary() {
     const addBookButton = document.querySelector('#add-book')

@@ -5,13 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="index.css">
+
     <script src="index.js" defer></script>
     <title>Library</title>
 </head>
 <body>
 
-    <input type="text" id="user-input">
-    <button id="add-book">Add Book</button>
+    <form action="">
+        <label for="title-input">Book Title</label>
+        <input type="text" id="title-input">
+
+        <label for="author-input">Author</label>
+        <input type="text" id="author-input">
+
+        <label for="pages-input">Number of Pages</label>
+        <input type="text" id="pages-input">
+
+        <label for="read-input">Have you read it?</label>
+        <div><input type="checkbox" id="read-input"><span>YES</span></div>
+        
+
+        <button id="add-book">Add Book</button>
+    </form>
+
 
     <div id="my-library"></div>
     

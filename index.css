@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px 20px;
+    margin: 20px 0px;
+}
+
+button {
+    grid-column: 1/3;
+    padding: 10px 0px;
+    margin: 10px 80px;
+    font-size: medium;
+}
+
+label {
+    padding-right: 20px;
+}

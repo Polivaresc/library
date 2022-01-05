@@ -1,43 +1,30 @@
 let myLibrary = []
 
-
-// function Book(title) {
-//     this.title = title
-//     this.author = author 
-//     this.pages = pages 
-
-//     isRead = function () {
-//         if (read) {
-//             return 'already read'
-//         } else {
-//             return 'not read yet'
-//         }
-//     }
-// }
-
-// const Book = {
-//     title: this.title,
-//     author: this.author,
-//     pages: this.pages,
-//     isRead: function() {
-//                 if (read) {
-//                     return 'already read'
-//                 } else {
-//                     return 'not read yet'
-//                 }
-//             }
-// }
-
-
-function addBookToLibrary() {
-    const addBookButton = document.querySelector('#add-book')
+const addBookButton = document.querySelector('#add-book')
     addBookButton.addEventListener('click', () => {
-        const userInput = document.querySelector('#user-input').value
-        myLibrary.push(userInput)
-
+        addBookToLibrary()
         displayBooks()
         clearInput()
     })
+
+
+function Book(title, author, pages, read) {
+    this.title = title
+    this.author = author 
+    this.pages = pages 
+    this.read = read
+}
+
+function addBookToLibrary() {
+    const newTitle = document.querySelector('#title-input').value
+    const newAuthor = document.querySelector('#author-input').value
+    const newPages = document.querySelector('#pages-input').value
+    const newRead = document.querySelector('#read-input').checked
+
+
+    const NewBook = new Book(newTitle, newAuthor, newPages, newRead)
+
+    myLibrary.push(NewBook)
 }
 
 function displayBooks() {
@@ -46,14 +33,23 @@ function displayBooks() {
 
     myLibrary.forEach((book) => {
         const bookDiv = document.createElement('div')
-        bookDiv.innerText = book
+        let readMessage = 'Already read'
+
+        if (!book.read) {
+            readMessage = 'Not read yet'
+        }
+
+        bookDiv.classList.add('book-cart')
+        bookDiv.innerHTML = `<div>${book.title}</div>
+            <div>(${book.author})</div>
+            <div>${book.pages} pages</div>
+            <div>${readMessage}</div>`
 
         fullLibrary.appendChild(bookDiv)
     }) 
 }
 
 function clearInput() {
-    document.getElementById('user-input').value = ''
+    document.querySelectorAll('input').forEach(i => i.value = '')
+    document.getElementById('read-input').checked = false
 }
-
-addBookToLibrary()

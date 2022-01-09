@@ -12,12 +12,14 @@
 </head>
 <body>
 
-    <div class="form">
+    <button id="show-form">NEW BOOK</button>
+
+    <form class="form" style="display: none;">
         <label for="title-input">Book Title</label>
-        <input type="text" id="title-input">
+        <input type="text" id="title-input" required>
 
         <label for="author-input">Author</label>
-        <input type="text" id="author-input">
+        <input type="text" id="author-input" required>
 
         <label for="pages-input">Number of Pages</label>
         <input type="text" id="pages-input">
@@ -26,8 +28,8 @@
         <div><input type="checkbox" id="read-input"><span>YES</span></div>
         
 
-        <button type="button" id="add-book">Add Book</button>
-    </div>
+        <button id="add-book">Add Book</button>
+    </form>
 
 
     <div id="my-library"></div>

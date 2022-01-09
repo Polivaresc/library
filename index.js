@@ -1,12 +1,19 @@
 let myLibrary = []
 
-const addBookButton = document.querySelector('#add-book')
-    addBookButton.addEventListener('click', () => {
-        addBookToLibrary()
-        displayBooks()
-        clearInput()
-    })
+const addBookForm = document.querySelector('form')
 
+addBookForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    addBookToLibrary()
+    displayBooks()
+    clearInput()
+    addBookForm.style.display = 'none'
+})
+
+const showForm = document.querySelector('#show-form')
+showForm.addEventListener('click', () => {
+    addBookForm.style.display = 'grid'
+})
 
 function Book(title, author, pages, read) {
     this.title = title
@@ -37,6 +44,10 @@ function displayBooks() {
 
         if (!book.read) {
             readMessage = 'Not read yet'
+        }
+
+        if (!book.pages) {
+            book.pages = '?'
         }
 
         bookDiv.classList.add('book-cart')

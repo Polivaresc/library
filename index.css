@@ -54,7 +54,7 @@ label {
 
 #my-library {
     display: grid;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(5, auto);
     padding: 10px 80px;
     margin: 20px auto;
     gap: 30px;
@@ -117,4 +117,57 @@ p {
 .not-read-status:hover {
     color: #FF7F7F;
     cursor: pointer;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-box {
+    /* background-color: #DADEDF; */
+    background-color: #94a2b3;
+    font-size: large;
+    margin: auto;
+    padding: 50px 70px;
+    /* border: 2px solid; */
+    border: 2px solid #DADEDF;
+    border-radius: 20px;
+}
+
+.modal-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.yes-button, .no-button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-weight: bold;
+    border: solid 2px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+}
+
+.yes-button:hover {
+    cursor: pointer;
+    border-color: #7eb041;
+    background-color: #AEF359;
+}
+
+.no-button:hover {
+    cursor: pointer;
+    border-color: #a35252;
+    background-color: #FF7F7F;
 }

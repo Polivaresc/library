@@ -74,10 +74,9 @@ function displayBooks() {
         deleteButton.classList.add('delete-button')
 
         deleteButton.addEventListener('click', () => {
-            const id = parseInt(bookCard.getAttribute('id'))
-            myLibrary.find(book => myLibrary.indexOf(book) === id)
-            myLibrary.splice(id, 1)
-            displayBooks()
+            const modal = document.querySelector('.modal')
+            modal.style.display = 'flex'
+            deleteBookModal()
         })
 
     }) 
@@ -86,4 +85,24 @@ function displayBooks() {
 function clearInput() {
     document.querySelectorAll('input').forEach(i => i.value = '')
     document.getElementById('read-input').checked = false
+}
+
+function deleteBookModal() {
+    const bookCard = document.querySelector('.book-card')
+    const modal = document.querySelector('.modal')
+    const modalYes = document.querySelector('.yes-button')
+    const modalNo = document.querySelector('.no-button')
+
+    modalYes.addEventListener('click', () => {
+        const id = parseInt(bookCard.getAttribute('id'))
+        myLibrary.find(book => myLibrary.indexOf(book) === id)
+        myLibrary.splice(id, 1)
+        displayBooks()
+
+        modal.style.display = 'none'
+    })
+
+    modalNo.addEventListener('click', () => {
+        modal.style.display = 'none'
+    })
 }

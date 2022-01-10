@@ -42,24 +42,33 @@ function displayBooks() {
         const bookCard = document.createElement('div')
         bookCard.setAttribute('id', myLibrary.indexOf(book))
 
-        let readMessage = 'Already read'
+        const readStatus = document.createElement('button')
+        readStatus.classList.add('read-status')
+        readStatus.textContent = 'Already read ✓'
 
+        
         if (!book.read) {
-            readMessage = 'Not read yet'
-        }
+            readStatus.textContent = 'Not read yet ✕'
+            readStatus.classList.replace('read-status', 'not-read-status')
+        }     
 
         if (!book.pages) {
-            book.pages = '?'
+            book.pages = '??'
         }
 
         bookCard.classList.add('book-card')
         bookCard.innerHTML = `<button>X</button>
             <p>${book.title}</p>
             <div>(${book.author})</div>
-            <div>${book.pages} pages</div>
-            <div>${readMessage}</div>`
-        
+            <div>${book.pages} pages</div>`
+
+        bookCard.appendChild(readStatus)
         fullLibrary.appendChild(bookCard)
+
+        readStatus.addEventListener('click', () => {
+            book.read = !book.read
+            displayBooks()
+        })  
         
         const deleteButton = bookCard.querySelector('button')
         deleteButton.classList.add('delete-button')

@@ -39,7 +39,9 @@ function displayBooks() {
     fullLibrary.innerHTML = ''
 
     myLibrary.forEach((book) => {
-        const bookDiv = document.createElement('div')
+        const bookCard = document.createElement('div')
+        bookCard.setAttribute('id', myLibrary.indexOf(book))
+
         let readMessage = 'Already read'
 
         if (!book.read) {
@@ -50,13 +52,25 @@ function displayBooks() {
             book.pages = '?'
         }
 
-        bookDiv.classList.add('book-cart')
-        bookDiv.innerHTML = `<div>${book.title}</div>
+        bookCard.classList.add('book-card')
+        bookCard.innerHTML = `<button>X</button>
+            <p>${book.title}</p>
             <div>(${book.author})</div>
             <div>${book.pages} pages</div>
             <div>${readMessage}</div>`
+        
+        fullLibrary.appendChild(bookCard)
+        
+        const deleteButton = bookCard.querySelector('button')
+        deleteButton.classList.add('delete-button')
 
-        fullLibrary.appendChild(bookDiv)
+        deleteButton.addEventListener('click', () => {
+            const id = parseInt(bookCard.getAttribute('id'))
+            myLibrary.find(book => myLibrary.indexOf(book) === id)
+            myLibrary.splice(id, 1)
+            displayBooks()
+        })
+
     }) 
 }
 

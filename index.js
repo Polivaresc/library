@@ -40,7 +40,8 @@ function displayBooks() {
 
     myLibrary.forEach((book) => {
         const bookCard = document.createElement('div')
-        bookCard.setAttribute('id', myLibrary.indexOf(book))
+        const id = myLibrary.indexOf(book)
+        bookCard.setAttribute('id', id)
 
         const readStatus = document.createElement('button')
         readStatus.classList.add('read-status')
@@ -76,7 +77,7 @@ function displayBooks() {
         deleteButton.addEventListener('click', () => {
             const modal = document.querySelector('.modal')
             modal.style.display = 'flex'
-            deleteBookModal()
+            modal.setAttribute('book', id)
         })
 
     }) 
@@ -87,22 +88,21 @@ function clearInput() {
     document.getElementById('read-input').checked = false
 }
 
-function deleteBookModal() {
-    const bookCard = document.querySelector('.book-card')
-    const modal = document.querySelector('.modal')
-    const modalYes = document.querySelector('.yes-button')
-    const modalNo = document.querySelector('.no-button')
 
-    modalYes.addEventListener('click', () => {
-        const id = parseInt(bookCard.getAttribute('id'))
-        myLibrary.find(book => myLibrary.indexOf(book) === id)
-        myLibrary.splice(id, 1)
-        displayBooks()
+const modal = document.querySelector('.modal')
+const modalYes = document.querySelector('.yes-button')
+const modalNo = document.querySelector('.no-button')
 
-        modal.style.display = 'none'
-    })
+modalYes.addEventListener('click', () => {
+    const id = parseInt(modal.getAttribute('book'))
+    myLibrary.find(book => myLibrary.indexOf(book) === id)
+    myLibrary.splice(id, 1)
+    displayBooks()
 
-    modalNo.addEventListener('click', () => {
-        modal.style.display = 'none'
-    })
-}
+    modal.setAttribute('book', '')
+    modal.style.display = 'none'
+})
+
+modalNo.addEventListener('click', () => {
+    modal.style.display = 'none'
+})

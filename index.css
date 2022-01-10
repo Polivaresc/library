@@ -54,7 +54,7 @@ label {
 
 #my-library {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(6, auto);
     padding: 10px 80px;
     margin: 20px auto;
     gap: 30px;
@@ -120,7 +120,7 @@ p {
 }
 
 .modal {
-    display: flex;
+    display: none;
     flex-direction: column;
     position: fixed;
     z-index: 1;
@@ -133,12 +133,10 @@ p {
 }
 
 .modal-box {
-    /* background-color: #DADEDF; */
     background-color: #94a2b3;
     font-size: large;
     margin: auto;
     padding: 50px 70px;
-    /* border: 2px solid; */
     border: 2px solid #DADEDF;
     border-radius: 20px;
 }
@@ -162,7 +160,7 @@ p {
 
 .yes-button:hover {
     cursor: pointer;
-    border-color: #7eb041;
+    border-color: #628a31;
     background-color: #AEF359;
 }
 
